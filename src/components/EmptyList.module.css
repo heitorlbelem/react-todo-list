@@ -1,0 +1,27 @@
+.emptyList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  border-top: 1px solid var(--gray-400);
+  border-radius: 16px;
+}
+
+.emptyList img {
+  margin-top: 4rem;
+  min-height: 54px;
+  width: 3.5rem;
+}
+
+.content {
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--gray-300);
+  text-align: center;
+}
+
+.content span {
+
+}

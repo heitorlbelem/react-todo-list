@@ -1,0 +1,93 @@
+main {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.content {
+  max-width: 46rem;
+  margin-top: -1.6875rem;
+}
+
+.newTaskForm {
+  display: grid;
+  grid-template-columns: 8fr 1fr;
+  gap: 0.5rem;
+}
+
+.newTaskForm input {
+  border: 1px solid var(--gray-700);
+  border-radius: 8px;
+  
+  background: var(--gray-500);
+  color: var(--gray-300);
+
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.4;
+
+  padding: 1rem;
+}
+
+.newTaskForm button {
+  border: 1px solid var(--blue-900);
+  border-radius: 8px;
+
+  background: var(--blue-900);
+  color: var(--gray-100);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem;
+
+  margin: 0.0625rem 0;
+
+  font-size: 0.875rem;
+  font-weight: bold;
+}
+
+.newTaskForm button:hover {
+  cursor: pointer;
+
+  background-color: var(--blue-500);
+  transition: background-color 0.2s;
+}
+
+.tasksBox {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tasksBox header {
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.createdTasksBadge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+
+  color: var(--blue-500);
+}
+
+.finishedTasksBadge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  
+  color: var(--purple-500);
+}
