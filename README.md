@@ -1,0 +1,3 @@
+# React To-Do List
+
+This project was created to start practicing ReactJS fundamentals, such as Components, Immutability, Properties, States...
