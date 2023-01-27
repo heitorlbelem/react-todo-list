@@ -62,14 +62,6 @@ export function App() {
     event.target.setCustomValidity('Esse campo é obrigatório')
   }
 
-  function renderList() {
-    if(tasks.length === 0) {
-      return <EmptyList />
-    }
-    
-    
-  }
-
   return (
     <>
       <Header />
