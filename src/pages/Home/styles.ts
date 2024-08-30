@@ -18,6 +18,8 @@ export const Header = styled.header`
 
 export const Main = styled.main`
   width: min(100%, 736px);
+  padding-inline: .5rem;
+
   display: flex;
   flex-direction: column;
 
