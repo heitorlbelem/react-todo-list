@@ -1,7 +1,5 @@
+import { Home } from "./pages/Home";
+
 export function App() {
-  return (
-    <>
-      <h1>React To Do List</h1>
-    </>
-  );
+  return <Home />;
 }
