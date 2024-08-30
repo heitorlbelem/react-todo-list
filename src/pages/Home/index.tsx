@@ -1,7 +1,7 @@
-import { PlusCircle } from "phosphor-react";
+import { PlusCircle, Trash } from "phosphor-react";
 import logo from "../../assets/logo.svg";
 
-import { Header, HomeContainer, Main } from "./styles";
+import { Header, HomeContainer, Main, Task, Tasks, TasksListCounter, TodoHeader } from "./styles";
 
 export function Home() {
   return (
@@ -21,23 +21,96 @@ export function Home() {
         </form>
 
         <section>
-          <header>
-            <p>
+          <TodoHeader>
+            <TasksListCounter titleColor="blue">
               Tarefas criadas
               <span>0</span>
-            </p>
-              
-            <p>
+            </TasksListCounter>
+
+            <TasksListCounter titleColor="purple">
               Concluídas
               <span>2 de 5</span>
-            </p>
-          </header>
+            </TasksListCounter>
+          </TodoHeader>
 
-          <ul>
-            <li>
-              <button></button>
-            </li>
-          </ul>
+          <Tasks>
+            <Task>
+              <button name="select" id="select" />
+              <p>
+                Integer urna interdum massa libero auctor neque turpis turpis semper.
+                Duis vel sed fames integer.
+              </p>
+              <button>
+                <Trash size={20}/>
+              </button>
+            </Task>
+
+            <Task>
+              <button name="select" id="select" />
+              <p>
+                Integer urna interdum massa libero auctor neque turpis turpis semper.
+                Duis vel sed fames integer.
+              </p>
+              <button>
+                <Trash size={20}/>
+              </button>
+            </Task>
+            
+            <Task>
+              <button name="select" id="select" />
+              <p>
+                Integer urna interdum massa libero auctor neque turpis turpis semper.
+                Duis vel sed fames integer.
+              </p>
+              <button>
+                <Trash size={20}/>
+              </button>
+            </Task>
+            
+            <Task>
+              <button name="select" id="select" />
+              <p>
+                Integer urna interdum massa libero auctor neque turpis turpis semper.
+                Duis vel sed fames integer.
+              </p>
+              <button>
+                <Trash size={20}/>
+              </button>
+            </Task>
+
+            <Task>
+              <button name="select" id="select" />
+              <p>
+                Integer urna interdum massa libero auctor neque turpis turpis semper.
+                Duis vel sed fames integer.
+              </p>
+              <button>
+                <Trash size={20}/>
+              </button>
+            </Task>
+
+            <Task>
+              <button name="select" id="select" />
+              <p>
+                Integer urna interdum massa libero auctor neque turpis turpis semper.
+                Duis vel sed fames integer.
+              </p>
+              <button>
+                <Trash size={20}/>
+              </button>
+            </Task>
+
+            <Task>
+              <button name="select" id="select" />
+              <p>
+                Integer urna interdum massa libero auctor neque turpis turpis semper.
+                Duis vel sed fames integer.
+              </p>
+              <button>
+                <Trash size={20}/>
+              </button>
+            </Task>
+          </Tasks>
         </section>
       </Main>
     </HomeContainer>
