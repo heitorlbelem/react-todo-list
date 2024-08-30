@@ -2,12 +2,23 @@ import { Check, PlusCircle, Trash } from "phosphor-react";
 import logo from "../../assets/logo.svg";
 
 import { ChangeEvent, FormEvent, useState } from "react";
-import { FinishedButton, Header, HomeContainer, Main, PendingButton, Task, TaskDescription, Tasks, TasksListCounter, TodoHeader } from "./styles";
+import {
+  FinishedButton,
+  Header,
+  HomeContainer,
+  Main,
+  PendingButton,
+  Task,
+  TaskDescription,
+  Tasks,
+  TasksListCounter,
+  TodoHeader,
+} from "./styles";
 
 interface Task {
-  id: string
-  title: string
-  finished: boolean
+  id: string;
+  title: string;
+  finished: boolean;
 }
 
 export function Home() {
@@ -16,7 +27,7 @@ export function Home() {
 
   const isNewTaskTextFilled = !!newTaskText;
   const totalTasks = tasks.length;
-  const totalFinishedTasks = tasks.filter(task => task.finished).length;
+  const totalFinishedTasks = tasks.filter((task) => task.finished).length;
 
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault();
@@ -25,10 +36,10 @@ export function Home() {
     const newTask: Task = {
       id,
       title: newTaskText,
-      finished: false
+      finished: false,
     };
 
-    setTasks(state => [...state, newTask]);
+    setTasks((state) => [...state, newTask]);
     setNewTaskText("");
   }
 
@@ -36,16 +47,18 @@ export function Home() {
     setNewTaskText(event.target.value);
   }
 
-  function handleToggleFinishTask(id: string){
-    setTasks(state => state.map(task => {
-      if(task.id !== id) return task;
+  function handleToggleFinishTask(id: string) {
+    setTasks((state) =>
+      state.map((task) => {
+        if (task.id !== id) return task;
 
-      return {...task, finished: !task.finished};
-    }));
+        return { ...task, finished: !task.finished };
+      }),
+    );
   }
 
-  function handleDeleteTask(id: string){
-    const tasksWithoutDeletedOne = tasks.filter(task => task.id !== id);
+  function handleDeleteTask(id: string) {
+    const tasksWithoutDeletedOne = tasks.filter((task) => task.id !== id);
 
     setTasks(tasksWithoutDeletedOne);
   }
@@ -69,7 +82,7 @@ export function Home() {
 
           <button type="submit" disabled={!isNewTaskTextFilled}>
             Criar
-            <PlusCircle size={16}/>
+            <PlusCircle size={16} />
           </button>
         </form>
 
@@ -82,28 +95,35 @@ export function Home() {
 
             <TasksListCounter titleColor="purple">
               Concluídas
-              <span>{totalFinishedTasks} de {totalTasks}</span>
+              <span>
+                {totalFinishedTasks} de {totalTasks}
+              </span>
             </TasksListCounter>
           </TodoHeader>
 
           <Tasks>
-            {tasks.map(task => {
-              return(
+            {tasks.map((task) => {
+              return (
                 <Task key={task.id}>
-                  {
-                    task.finished ?
-                    (
-                      <FinishedButton onClick={() => handleToggleFinishTask(task.id)}>
-                        <Check size={16}/>
-                      </FinishedButton>
-                    ) :
-                    <PendingButton onClick={() => handleToggleFinishTask(task.id)} />
-                  }
+                  {task.finished ? (
+                    <FinishedButton
+                      onClick={() => handleToggleFinishTask(task.id)}
+                    >
+                      <Check size={16} />
+                    </FinishedButton>
+                  ) : (
+                    <PendingButton
+                      onClick={() => handleToggleFinishTask(task.id)}
+                    />
+                  )}
                   <TaskDescription finished={task.finished}>
                     {task.title}
                   </TaskDescription>
-                  <button type="button" onClick={() => handleDeleteTask(task.id)}>
-                    <Trash size={20}/>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteTask(task.id)}
+                  >
+                    <Trash size={20} />
                   </button>
                 </Task>
               );
