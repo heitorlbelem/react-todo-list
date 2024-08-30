@@ -66,12 +66,16 @@ export const Main = styled.main`
       gap: .5rem;
       transition: background-color 200ms;
 
-      &:hover {
+      &:disabled {
+        cursor: not-allowed;
+      }
+
+      &:not(:disabled):hover {
         cursor: pointer;
         background-color: ${props => props.theme["blue-300"]};
       }
 
-      &:focus {
+      &:not(:disabled):focus {
         box-shadow: 0 0 0 2px ${props=>props.theme["blue-300"]};
       }
     }
@@ -87,7 +91,8 @@ export const TodoHeader = styled.header`
 const TITLE_COLORS = {
   "blue": "blue-600",
   "purple": "purple-600"
-};
+} as const;
+
 interface TasksListCounterProps {
   titleColor: keyof typeof TITLE_COLORS
 }
@@ -134,34 +139,6 @@ export const Task = styled.li`
   border-radius: 8px;
   border: 1px solid ${props => props.theme["gray-400"]};
 
-  button:first-child {
-    width: 1.5rem;
-    height: 1.5rem;
-    border-radius: 999px;
-
-    background-color: transparent;
-    border: 2px solid ${props => props.theme["blue-300"]};
-    transition: background-color 100ms, opacity 100ms;
-
-    &:hover {
-      background-color: ${props => props.theme["blue-600"]};
-      opacity: .2;
-      cursor: pointer;
-    }
-
-    &:focus {
-      outline: 0;
-      box-shadow: 0 0 0 1px ${props => props.theme["blue-300"]};
-    }
-  }
-
-  p {
-    flex: 1;
-    font-size: 1rem;
-    color: ${props => props.theme["gray-100"]};
-    line-height: 1.4;
-  }
-
   button:last-child {
     width: 1.5rem;
     height: 1.5rem;
@@ -186,5 +163,63 @@ export const Task = styled.li`
       border-radius: 4px;
       box-shadow: 0 0 0 1px ${props => props.theme["purple-300"]}
     }
+  }
+`;
+
+
+interface TaskDescriptionProps {
+  finished: boolean
+}
+
+export const TaskDescription = styled.p<TaskDescriptionProps>`
+  flex: 1;
+  font-size: 1rem;
+  color: ${props => props.finished ? props.theme["gray-300"] : props.theme["gray-100"]};
+  text-decoration: ${props => props.finished ? "line-through" : "none"};
+  line-height: 1.4;
+`;
+
+const BaseButton = styled.button`
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  border: 0;
+  outline: 0;
+
+  background-color: transparent;
+  color: ${props => props.theme["gray-100"]};
+  transition: background-color 100ms, opacity 100ms;
+
+  cursor: pointer;
+`;
+
+export const PendingButton = styled(BaseButton)`
+  border: 2px solid ${props => props.theme["blue-300"]};
+
+  &:hover {
+    background-color: ${props => props.theme["blue-600"]};
+    opacity: .2;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px ${props => props.theme["blue-300"]};
+  }
+`;
+
+export const FinishedButton = styled(BaseButton)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: ${props => props.theme["purple-600"]};
+
+  &:hover {
+    background-color: ${props => props.theme["purple-300"]};
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 1px ${props => props.theme["purple-300"]};
   }
 `;
