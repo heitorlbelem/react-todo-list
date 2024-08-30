@@ -15,6 +15,8 @@ export function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   const isNewTaskTextFilled = !!newTaskText;
+  const totalTasks = tasks.length;
+  const totalFinishedTasks = tasks.filter(task => task.finished).length;
 
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault();
@@ -75,12 +77,12 @@ export function Home() {
           <TodoHeader>
             <TasksListCounter titleColor="blue">
               Tarefas criadas
-              <span>0</span>
+              <span>{totalTasks}</span>
             </TasksListCounter>
 
             <TasksListCounter titleColor="purple">
               Concluídas
-              <span>2 de 5</span>
+              <span>{totalFinishedTasks} de {totalTasks}</span>
             </TasksListCounter>
           </TodoHeader>
 
