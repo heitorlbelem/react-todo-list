@@ -1,4 +1,8 @@
-export const defaultTheme = {
+type ThemeType = {
+  [key: string]: string;
+};
+
+export const defaultTheme: ThemeType = {
   "blue-600": "#1E6F9F",
   "blue-300": "#4EA8DE",
 
