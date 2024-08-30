@@ -23,6 +23,7 @@ export default tseslint.config(
         "warn",
         { allowConstantExport: true },
       ],
+      '@typescript-eslint/no-empty-object-type': 'off',
       quotes: ["error", "double"],
       semi: ["error", "always"]
     },
