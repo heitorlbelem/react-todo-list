@@ -2,6 +2,7 @@ import { PlusCircle } from "phosphor-react";
 import logo from "../../assets/logo.svg";
 
 import { ChangeEvent, FormEvent, useState } from "react";
+import { Empty } from "./components/Empty";
 import { TaskItem } from "./components/TaskItem";
 import {
   Header,
@@ -97,19 +98,20 @@ export function Home() {
               </span>
             </TasksListCounter>
           </TodoHeader>
-
           <Tasks>
-            {tasks.map((task) => {
-              return (
-                <TaskItem
-                  id={task.id}
-                  title={task.title}
-                  finished={task.finished}
-                  onDeleteTask={onDeleteTask}
-                  onToggleTask={onToggleTask}
-                />
-              );
-            })}
+            {tasks &&
+              tasks.map((task) => {
+                return (
+                  <TaskItem
+                    id={task.id}
+                    title={task.title}
+                    finished={task.finished}
+                    onDeleteTask={onDeleteTask}
+                    onToggleTask={onToggleTask}
+                  />
+                );
+              })}
+            {tasks.length === 0 && <Empty />}
           </Tasks>
         </section>
       </Main>
