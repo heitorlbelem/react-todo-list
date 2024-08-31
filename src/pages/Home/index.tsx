@@ -1,15 +1,12 @@
-import { Check, PlusCircle, Trash } from "phosphor-react";
+import { PlusCircle } from "phosphor-react";
 import logo from "../../assets/logo.svg";
 
 import { ChangeEvent, FormEvent, useState } from "react";
+import { TaskItem } from "./components/TaskItem";
 import {
-  FinishedButton,
   Header,
   HomeContainer,
   Main,
-  PendingButton,
-  Task,
-  TaskDescription,
   Tasks,
   TasksListCounter,
   TodoHeader,
@@ -47,7 +44,7 @@ export function Home() {
     setNewTaskText(event.target.value);
   }
 
-  function handleToggleFinishTask(id: string) {
+  function onToggleTask(id: string) {
     setTasks((state) =>
       state.map((task) => {
         if (task.id !== id) return task;
@@ -57,7 +54,7 @@ export function Home() {
     );
   }
 
-  function handleDeleteTask(id: string) {
+  function onDeleteTask(id: string) {
     const tasksWithoutDeletedOne = tasks.filter((task) => task.id !== id);
 
     setTasks(tasksWithoutDeletedOne);
@@ -104,28 +101,13 @@ export function Home() {
           <Tasks>
             {tasks.map((task) => {
               return (
-                <Task key={task.id}>
-                  {task.finished ? (
-                    <FinishedButton
-                      onClick={() => handleToggleFinishTask(task.id)}
-                    >
-                      <Check size={16} />
-                    </FinishedButton>
-                  ) : (
-                    <PendingButton
-                      onClick={() => handleToggleFinishTask(task.id)}
-                    />
-                  )}
-                  <TaskDescription finished={task.finished}>
-                    {task.title}
-                  </TaskDescription>
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteTask(task.id)}
-                  >
-                    <Trash size={20} />
-                  </button>
-                </Task>
+                <TaskItem
+                  id={task.id}
+                  title={task.title}
+                  finished={task.finished}
+                  onDeleteTask={onDeleteTask}
+                  onToggleTask={onToggleTask}
+                />
               );
             })}
           </Tasks>
